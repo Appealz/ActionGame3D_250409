@@ -130,9 +130,12 @@ public class GameManager : Singleton<GameManager>
             PlayerData.inventory.AddItem(newItem);
             return true;
         }
+
         return false;
     }
 
     #endregion
+
+    public InventoryData INVEN => playerData.inventory;
 
 }

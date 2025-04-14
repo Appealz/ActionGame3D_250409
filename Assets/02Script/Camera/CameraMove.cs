@@ -20,7 +20,14 @@ public class CameraMove : MonoBehaviour
                 targetTrans = targetObj.transform;
             }
         }
+
+        //UIManager.OnAttackButtonPressed += TEST;
     }
+
+    //public void TEST()
+    //{
+    //    Debug.Log($"{gameObject.name}에서 공격버튼 구독");
+    //}
 
     // LateUpdate를 사용하는 이유는 캐릭터가 이동한 뒤에 카메라가 따라가야하기 때문.
     private void LateUpdate()

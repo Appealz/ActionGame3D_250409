@@ -84,7 +84,8 @@ public class InventoryData
 
     // 외부에서 아이템의 목록을 참조하기 위한 메소드
     // 참조형으로 반환.(값복사 x) => 외부에서 데이터를 수정할 수 있으므로 위험하긴함.
-    public List<InventoryItemData> GetItemList()
+    // IReadOnlyList : Add와 Remove를 수행하지 못함
+    public IReadOnlyList<InventoryItemData> GetItemList()
     {
         // 현재 이코드는 캡슐화 되어있지 않으므로 위험한 코드.
         curItemCount = items.Count;
@@ -93,7 +94,7 @@ public class InventoryData
 
 
     public int DeleteItem(InventoryItemData deleteItem)
-    {
+    {        
         int index = FindItemIndex(deleteItem);
         if(index < 0)
         {
