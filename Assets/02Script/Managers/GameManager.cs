@@ -72,10 +72,10 @@ public class GameManager : Singleton<GameManager>
         CreateUserData("HIPlayer");
         SaveData();
 
-        InventoryItemData testItem = new InventoryItemData();
-        testItem.itemID = 1001;
-        testItem.amount = 3;
-        LootingItme(testItem);
+        //InventoryItemData testItem = new InventoryItemData();
+        //testItem.itemID = 1001;
+        //testItem.amount = 3;
+        //LootingItme(testItem);
 
         Debug.Log(playerData.inventory.CurItemCount);
     }

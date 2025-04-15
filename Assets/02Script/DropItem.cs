@@ -43,6 +43,7 @@ public class DropItem : MonoBehaviour
         }
     }
 
+    [SerializeField] int dropID = 2002;
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Ground"))
@@ -58,7 +59,7 @@ public class DropItem : MonoBehaviour
             InventoryItemData newData = new InventoryItemData();
 
             // todo : 몬스터가 드랍할 때 아이템의 종류가 결정되도록 개선.
-            newData.itemID = 2002;
+            newData.itemID = dropID;
             newData.amount = 1;
 
             if(GameManager.Instance.LootingItme(newData))

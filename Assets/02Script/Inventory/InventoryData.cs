@@ -55,22 +55,26 @@ public class InventoryData
                 if(!IsFull()) // 장비창이 가득 차지 않았다면
                 {
                     // uID 생성 후
-                    newItem.uID = 1004; // todo : uID 생성기 만든 후 수정
+                    //newItem.uID = GameManager.Instance.ItemUIDMaker; // todo : uID 생성기 만든 후 수정
                     // 리스트에 추가
                     items.Add(newItem);
                     curItemCount++;// 현재 아이템 개수 증가.
                 }
+                else
+                {
+                    Debug.Log("Inventory is Full");
+                }
             }
-            else if(index < 0) // 현 인벤토리에 같은 아이템이 없는 경우
+            else if(index < 0) // 장착템이 아니면서 인벤토리에 없는 경우
             {
+                newItem.uID = -1;
                 if(!IsFull())
                 {
-                    newItem.uID = -1; // 겹쳐지는 아이템은 uID가 없도록
                     items.Add(newItem);
                     curItemCount++;
                 }
             }
-            else // 이미 동일한 아이템이 있고, 겹쳐지는 아이템일때
+            else // 이미 동일한 아이템이 있고, 겹쳐지는 아이템일때(장착템이 아닐때)
             {
                 items[index].amount += newItem.amount; // 기존에 있는 아이템의 개수만큼 새로들어온 아이템의 개수를 더해줌.
             }
@@ -92,6 +96,12 @@ public class InventoryData
         return items;
     }
 
+    public List<InventoryItemData> GetItemList2()
+    {
+        // 현재 이코드는 캡슐화 되어있지 않으므로 위험한 코드.
+        curItemCount = items.Count;
+        return items;
+    }
 
     public int DeleteItem(InventoryItemData deleteItem)
     {        
